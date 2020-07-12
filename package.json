@@ -1,0 +1,26 @@
+{
+  "name": "authcrud-apollo",
+  "version": "1.0.0",
+  "description": "Project instance",
+  "main": "index.js",
+  "author": "Seun",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "apollo-server-express": "^2.14.4",
+    "bcryptjs": "^2.4.3",
+    "consola": "^2.13.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^b5.9.19",
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "start": "node client/server/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

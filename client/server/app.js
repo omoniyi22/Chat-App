@@ -102,13 +102,13 @@ wss.on('connection', (ws) => {
 })
 
 
-// if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     const build_path = path.join(__dirname, '..', 'build')
     app.use(express.static(build_path))
     app.get('/*', (req, res) => {
         res.sendFile(path.join(build_path, 'index.html'))
     })
-// }
+}
 
 app.listen(3002,()=>{
 	console.log('Yes working')

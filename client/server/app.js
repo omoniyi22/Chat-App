@@ -45,15 +45,23 @@
 //             users
 //         }, ws)
 //     })       
-// })          
-const WebSocket = require('ws');
+// })    
 
-const wss = new WebSocket.Server({ port: 3001 })
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const PORT = process.env.PORT || 4001;
+const cors = require('cors')
 const path = require('path')
-const express = require('express')
-const app = express()
-const cors = require("cors")
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 3001 })
+
+
 app.use(cors())
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+
 
 // const users = []
 
@@ -104,14 +112,19 @@ app.use(cors())
 // })
 
 
+
 // if (process.env.NODE_ENV === 'production') {
-    const build_path = path.join(__dirname, '..', 'build')
-    app.use(express.static(build_path))
-    app.get('/*', (req, res) => {
-        res.sendFile(path.join(build_path, 'index.html'))
-    })
+const build_path = path.join(__dirname, '..', 'build')
+app.use(express.static(build_path))
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(build_path, 'index.html'))
+})
 // }
 
-app.listen(3002,()=>{
-	console.log('Yes working')
+
+app.listen(PORT, () => {
+    console.log('server is working', PORT);
 })
+
+
+

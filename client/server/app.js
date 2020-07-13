@@ -5,6 +5,11 @@ const PORT = process.env.PORT || 4001;
 const cors = require('cors')
 const path = require('path')
 const WebSocket = require('ws');
+
+app.use(cors())
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 const wss = new WebSocket.Server({ port: 3001 })
 
 const users = []
@@ -55,9 +60,6 @@ wss.on('connection', (ws) => {
 	})
 })
 
-app.use(cors())
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
 const build_path = path.join(__dirname, '..', 'build')
